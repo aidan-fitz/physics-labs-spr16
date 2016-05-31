@@ -1,0 +1,48 @@
+%%%% Thanks to Brandon Lin for these diagrams
+
+\documentclass[12pt]{article}
+\usepackage{tikz}
+\usetikzlibrary{circuits,circuits.ee.IEC}
+\usepackage{circuitikz}
+\tikzset{circuit declare symbol = amm}
+\tikzset{set amm graphic ={draw,generic circle IEC, minimum size=7mm,info=center:A}}
+\tikzset{circuit declare symbol = voltm}
+\tikzset{set voltm graphic ={draw,generic circle IEC, minimum size=7mm,info=center:V}}
+\tikzset{circuit declare symbol = galvm}
+\tikzset{set galvm graphic ={draw,generic circle IEC, minimum size=7mm,info=center:G}}
+
+\begin{document}
+\begin{figure}[h!]
+\centering
+\begin{circuitikz}[circuit ee IEC] \draw
+  (0,0) to[vR,l=$R_h$] (0,2)
+  to[battery,l=$V$] (0,5) -- (2,5)
+  to[amm] (2,3.5) to[short,i=$I$] (2,2.4)
+  to[R,l=$R$] (2,0) -- (0,0)
+  (2,2.5) -- (4,2.5) to[voltm] (4,0) -- (2,0)
+;
+\end{circuitikz}
+\begin{circuitikz}[circuit ee IEC] \draw
+  (0,0) to[vR,l=$R_h$] (0,2)
+  to[battery,l=$V$] (0,5) -- (2,5)
+  to[amm] (2,3.5) to[short,i=$I$] (2,2.4)
+  to[R,l=$R$] (2,0) -- (0,0)
+  (2,4.8) -- (4,4.8) to[voltm] (4,0) -- (2,0)
+;
+\end{circuitikz}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\begin{circuitikz}[circuit ee IEC] \draw
+  (0,0) to[battery,l=$V$] (0,8)
+  to[short,i=$I$] (4,8)
+  to[R,l=$R_1$,i=$I_1$] (2,4)
+  to[R,l=$R_2$,i=$I_1$] (4,0) -- (0,0)
+  (4,8) to[R,l=$R_s$,i=$I_2$] (6,4)
+  to[R,l=$R_x$,i=$I_2$] (4,0)
+  (2,4) to[galvm] (6,4)
+  ;
+\end{circuitikz}
+\end{figure}
+\end{document}

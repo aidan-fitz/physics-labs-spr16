@@ -1,0 +1,223 @@
+%%%%%%%%%%Packages%%%%%%%%%
+
+\documentclass[11pt, titlepage, letterpaper, twoside]{article}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{hyperref, pgf, tikz}
+
+\usepackage{subcaption}
+
+\usepackage{fancyhdr}
+\usetikzlibrary{arrows}
+\usepackage[margin=1.25in]{geometry}
+
+\usetikzlibrary{circuits,circuits.ee.IEC}
+\usepackage{circuitikz}
+\tikzset{circuit declare symbol = amm}
+\tikzset{set amm graphic ={draw,generic circle IEC, minimum size=7mm,info=center:A}}
+\tikzset{circuit declare symbol = voltm}
+\tikzset{set voltm graphic ={draw,generic circle IEC, minimum size=7mm,info=center:V}}
+%\tikzset{circuit declare symbol = galvm}
+%\tikzset{set galvm graphic ={draw,generic circle IEC, minimum size=7mm,info=center:G}}
+
+%%%%%%%%%%New Commands%%%%%%%%%
+\pagestyle{fancy}
+
+\frenchspacing
+
+
+
+\lhead{Lab \#1 }  %insert lab # here
+\rhead{\thepage}
+\cfoot{}
+
+\title{\textbf{Measuring Resistance} \\ \ \\ \large Lab \#1 }
+\author{Name: Aidan Fitzgerald \\ Partner: Jared Beh}
+\date{May 31, 2016}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\LARGE Measuring Resistance
+\end{center}
+
+\section*{Objective}
+Demonstrate the relative accuracy of the ammeter-voltmeter methods and the Wheatstone bridge method of measuring electrical resistance.
+
+\section{Introduction}
+
+\subsection{Ammeter-Voltmeter Methods}
+
+The resistance of an electrical load can be measured by placing an ammeter in series and a voltmeter in parallel with the load, and dividing the voltage
+reading by the current reading, per Ohm's law:
+
+\begin{equation}
+R = \frac{V}{I\/}.
+\end{equation}
+
+The resistance of an ideal voltmeter $R_v$ is infinite, so that no current passes through it; the resistance of an ideal ammeter $R_a$ is zero. In reality,
+however, voltmeters allow a little current to trickle through, and real-world ammeters produce a small voltage drop; these result in discrepancies between
+the measured resistance and the true resistance.
+
+The ammeter and voltmeter can be arranged in two different ways:
+
+\begin{figure}[h!]
+\centering
+
+\begin{subfigure}[h!]{0.4\textwidth}
+\begin{circuitikz}[circuit ee IEC] \draw
+  (0,0) to[vR,l=$R_h$] (0,2)
+  to[battery,l=$V$] (0,5) -- (2,5)
+  to[amm] (2,3.5) to[short,i=$I$] (2,2.4)
+  to[R,l=$R$] (2,0) -- (0,0)
+  (2,2.5) -- (4,2.5) to[voltm] (4,0) -- (2,0)
+;
+\end{circuitikz}
+\subcaption{Voltmeter parallel to load}
+\end{subfigure}
+\begin{subfigure}[h!]{0.5\textwidth}
+\begin{circuitikz}[circuit ee IEC] \draw
+  (0,0) to[vR,l=$R_h$] (0,2)
+  to[battery,l=$V$] (0,5) -- (2,5)
+  to[amm] (2,3.5) to[short,i=$I$] (2,2.4)
+  to[R,l=$R$] (2,0) -- (0,0)
+  (2,4.8) -- (4,4.8) to[voltm] (4,0) -- (2,0)
+;
+\end{circuitikz}
+\subcaption{Voltmeter parallel to ammeter and load}
+\end{subfigure}
+
+\caption{Two ammeter-voltmeter circuit setups}
+
+\end{figure}
+
+In Figure 1(a), the voltmeter is parallel only to the load, so the voltages across the voltmeter and load are equal and the current gets split between them:
+$I_{obs} = I_{true} + I_v$. Rearranging and substituting into Ohm's law, we obtain the following relationship between the true resistances of the load and the
+voltmeter:
+
+\begin{equation}
+  R = \frac{V}{I_{true}} = \frac{V}{I_{obs} - I_v} = \frac{V}{I_{obs} - V/R_v}
+\end{equation}
+
+Because $I_v$ is subtracted from the denominator, the measured value of $R$ is less than the true value.
+
+In Figure 1(b), the voltmeter is parallel to the series combination of the load and the ammeter. The voltages across the voltmeter, load, and ammeter are
+related by the equation $V = V_{load} + V_a = IR + IR_a$, so the true resistance is given by subtracting $R_a$ from the measured resistance.
+
+\begin{equation}
+  R = \frac{V}{I} - R_a
+\end{equation}
+
+
+\subsection{Wheatstone Bridge Method}
+
+A Wheatstone bridge consists of three resistors of known resistance and a resistor of unknown resistance arranged in a quadrilateral, as shown in Figure 2. Two
+opposite endpoints of the quadrilateral are joined by an ammeter (traditionally a galvanometer), and the other two endpoints are connected to the terminals of
+a battery.
+
+\begin{figure}[h!]
+\centering
+\begin{circuitikz}[circuit ee IEC] \draw
+  (0,0) to[battery,l=$V$] (0,8)
+  to[short,i=$I$] (4,8)
+  to[R,l=$R_1$,i=$I_1$] (2,4)
+  to[R,l=$R_2$,i=$I_1$] (4,0) -- (0,0)
+  (4,8) to[R,l=$R_s$,i=$I_2$] (6,4)
+  to[R,l=$R_x$,i=$I_2$] (4,0)
+  (2,4) to[amm] (6,4)
+  ;
+\end{circuitikz}
+\caption{Wheatstone bridge}
+\end{figure}
+
+When the known resistances are adjusted such that the current through the ammeter is zero, the known and unknown resistances are related by the equation
+
+\begin{equation}
+  R_x = \frac{R_2}{R_1} R_s
+\end{equation}
+
+\section{Procedures and Results}
+
+\subsection{Ammeter-Voltmeter Methods}
+
+We set up the circuit shown in Figure 1(a), using a rheostat as $R_h$. We adjusted the rheostat to three different settings and took the ammeter and
+voltmeter readings.
+
+\begin{table}[h!]
+\centering
+\caption{Measurements for setup in Figure 1(a)}
+\begin{tabular}{|l|l|l|}
+\hline
+$I$     & $V$       & $R$             \\ \hline
+0.084 A & 4.29 V    & $51.07\,\Omega$ \\ \hline
+0.068 A & 3.52 V    & $51.76\,\Omega$ \\ \hline
+0.055 A & 2.82 V    & $51.27\,\Omega$ \\ \hline
+      & Average $R$ & $51.37\,\Omega$ \\ \hline
+\end{tabular}
+\end{table}
+
+Then we changed the setup to the one shown in Figure 1(b) and took current and voltage measurements again.
+
+\begin{table}[h!]
+\centering
+\caption{Measurements for setup in Figure 1(b)}
+\begin{tabular}{|l|l|l|}
+\hline
+$I$     & $V$         & $R$             \\ \hline
+0.082 A & 4.21 V      & $51.34\,\Omega$ \\ \hline
+0.066 A & 3.43 V      & $51.97\,\Omega$ \\ \hline
+0.049 A & 2.70 V      & $55.10\,\Omega$ \\ \hline
+        & Average $R$ & $52.80\,\Omega$ \\ \hline
+\end{tabular}
+\end{table}
+
+Finally, we measured the true resistance of the load and the voltmeter by connecting both ends to an ohmmeter.
+
+\begin{table}[h!]
+\centering
+\caption{True values of $R$ and $R_v$}
+\begin{tabular}{|l|l|}
+\hline
+$R$   & $996\,\mathrm{k\Omega}$ \\ \hline
+$R_v$ & $50.7\,\Omega$          \\ \hline
+\end{tabular}
+\end{table}
+
+
+\subsection{Wheatstone Bridge Method}
+
+We set up the circuit shown in Figure 2, using a rheostat as $R_s$ and a digital multimeter as the ammeter. We adjusted the rheostat until the current reading
+was zero. Then, we measured the values of $R_s$, $R_1$, $R_2$, and $R_x$ by connecting both ends to an ohmmeter.
+
+\begin{table}[h!]
+\centering
+\caption{True resistances of Wheatstone bridge resistors}
+\begin{tabular}{| r | r | r | r |}
+  \hline
+  $R_s$          & $R_1$          & $R_2$          & $R_x$          \\ \hline
+  $10.7\,\Omega$ & $12.5\,\Omega$ & $28.7\,\Omega$ & $27.2\,\Omega$ \\ \hline
+\end{tabular}
+\end{table}
+
+\section{Discussion}
+
+Taking the true value of $R$ given in Table 3 and the averages of the measurements in Tables 1 and 2, the percent error using the first ammeter-voltmeter
+method was 1.32\%, while the percent error for the second was 4.15\%.
+
+To obtain a value of $R_x$ through the Wheatstone bridge method, we substitute the values in Table 4 into Equation 4:
+
+\begin{align*}
+  R_x &= \frac{R_2}{R_1} R_s \\
+      &= \frac{28.7\,\Omega}{12.5\,\Omega} 10.7\,\Omega \\
+      &= 24.6\,\Omega
+\end{align*}
+
+The percent error for this method is 9.68\%. This is greater than the percent errors for the two ammeter-voltmeter methods.
+
+\section{Conclusion}
+The two ammeter-voltmeter methods differ in that one always yields a value greater than the true resistance while the other always yields a value less than
+the true resistance. However, both methods are more precise than the Wheatstone bridge method.
+
+\end{document}
