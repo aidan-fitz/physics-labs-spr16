@@ -1,13 +1,20 @@
 %%%%%%%%%%Packages%%%%%%%%%
 
-\documentclass[11pt, titlepage]{article}
-\usepackage{amsmath,amsthm,amssymb}
+\documentclass[11pt, titlepage, letterpaper, twoside]{article}
+\usepackage{amsmath, amsthm, amssymb}
 \usepackage{hyperref, pgf, tikz}
 \usepackage{fancyhdr}
 \usetikzlibrary{arrows}
 \usepackage[margin=1.25in]{geometry}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetikzlibrary{circuits,circuits.ee.IEC}
+\usepackage{circuitikz}
+\tikzset{circuit declare symbol = amm}
+\tikzset{set amm graphic ={draw,generic circle IEC, minimum size=7mm,info=center:A}}
+\tikzset{circuit declare symbol = voltm}
+\tikzset{set voltm graphic ={draw,generic circle IEC, minimum size=7mm,info=center:V}}
+
 
 %%%%%%%%%%New Commands%%%%%%%%%
 
@@ -15,35 +22,99 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagestyle{fancy}
+\frenchspacing
 
 \lhead{Lab \#3 }  %insert lab # here
 \rhead{\thepage}
 \cfoot{}
 
 \title{\textbf{RC Circuit} \\ \ \\ \large Lab \#3 }
-\author{Name: Aidan Fitzgerald \\ Partner: Insert Partner}
-\date{}
+\author{Name: Aidan Fitzgerald \\ Partner: Jared Beh}
+\date{June 7, 2016}
 \begin{document}
 
 \maketitle
 
 \begin{center}
-\LARGE Title
+\LARGE RC Circuit
 \end{center}
 
 \section*{Objective}
-Hi
+Infer the relationship between the time constant $\tau$, resistance $R$, and capacitance $C$ of an RC circuit.
 
-\section*{Introduction}
-How
+\section{Introduction}
+An RC circuit is a type of circuit made of a resistor and a capacitor connected in series, like so:
 
-\section*{Procedures and Results}
-Are
+\begin{figure}[h!]
+  \centering
+  \begin{circuitikz}[circuit ee IEC] \draw
+    (0,0) -- (0,6) -- (6,6) to[short,-*] (6,3)
+    (6,1.5) to[short,*-] (6,0) to[battery,l=$V_0$] (0,0)
+    (0,2.25) to[short,*-] (1,2.25) to[C,l=$C$] (3,2.25) to[R,l=$R$] (5.25,2.25) to[short,-*] (6,2.25)
+    (1,2.25) to[short,*-] (1,4) to[voltm] (3,4) to[short,-*] (3,2.25)
+    ;
+    \draw[very thick] (6,2.25) -- +(30:0.75);
+  \end{circuitikz}
+  \caption{RC circuit}
+\end{figure}
 
-\section*{Discussion}
+
+When a constant DC voltage $V_0$ is applied to the circuit, an electric field builds up inside the capacitor
+as it gradually charges. By Kirchhoff's voltage law, the circuit's behavior as a function of time is given
+by the first-order differential equation
+
+\begin{equation}
+  V_0 - \frac{Q}{C} - R\dot{Q} = 0
+\end{equation}
+
+The solution to this equation is
+
+\begin{equation}
+  V(t) = V_0\,(1 - e^{-t/RC})
+\end{equation}
+
+As $t$ approaches infinity, $V(t)$ approaches $V_0$.
+
+The time constant $\tau$ of an RC circuit is defined such that
+
+\begin{equation}
+V(\tau) = V_0\,(1 - e^{-1}) \approx 0.63\,V_0.
+\end{equation}
+
+Therefore,
+
+\begin{equation}
+  \tau = RC.
+\end{equation}
+
+Note that $\tau$ does not depend on $V_0$: the greater the applied voltage, the faster the capacitor charges.
+
+When a capacitor is discharging into an RC circuit, it produces an exponentially decaying direct current. As a function of time,
+this is
+
+\begin{equation}
+  V(t) = V_0\, e^{-t/\tau}
+\end{equation}
+
+We can graph the logarithm of voltage as a linear function of time. From Eq. 2, we obtain
+
+\begin{equation}
+  \ln(V_0 - V) = -\frac{t}{RC} + \ln V_0
+\end{equation}
+
+and from Eq. 5, we get
+
+\begin{equation}
+  \ln V = -\frac{t}{RC} + \ln V_0
+\end{equation}
+
+\section{Procedures and Results}
+We set up the circuit shown in Figure 1.
+
+\section{Discussion}
 You
 
-\section*{Conclusion}
+\section{Conclusion}
 Today
 
 \end{document}
