@@ -106,7 +106,7 @@ Substituting $t = \tau$,
 
 
 \section{Procedures and Results}
-We set up the circuit shown in Figure 1. We set $V_0$ to 4.5 V, $R$ to $1.6\,\mathrm{k\Omega}$, and $C$ to $27\,\mathrm{\mu F}$. We turned on
+We set up the circuit shown in Figure 1. We set $V_0$ to 4.5 V, $R$ to $1.6\,\mathrm{k\Omega}$, and $C$ to 27 mF. We turned on
 the power and took voltage measurements every 5 seconds for 45 seconds.
 
 \begin{table}[h!]
@@ -161,11 +161,11 @@ Time (s) & Voltage (V) & \% of $V_0$ \\ \hline
 
 
 
-Then, we repeated these steps with a $200-\Omega$ resistor and $V_0 = 12 \mathrm{V}$.
+Then, we repeated these steps with a $200\,\Omega$ resistor and $V_0 = 12\,\mathrm{V}$.
 
 \begin{table}[h!]
 \centering
-\caption{Charging with a $200-\Omega$ resistor for 60 s.}
+\caption{Charging with a $200\,\Omega$ resistor for 60 s.}
 \label{charging-2}
 \begin{tabular}{|l|l|l|}
 \hline
@@ -216,13 +216,23 @@ Time (s) & Voltage (V) & \% of $V_0$ \\ \hline
 \section{Discussion}
 
 We know from Eq. 3 that during charging, the voltage rises to about 63\% of its maximum level after one time constant.
-
+In Table 1, this occurs at roughly 15 s. This implies that $\tau \approx 15\,\mathrm{s}$.
+Using Eq. 4, we obtained an accepted value of $\tau = RC = (1600\,\Omega)(27\,\mathrm{mF}) = 43.2\,\mathrm{s}$.
+The percent error was 65\%.
 
 Similarly, by Eq. 6, during discharging, the voltage drops to about 37\% of its original level after one time constant.
+In Table 2, this occurs between 10 s and 15 s, yielding $\tau \approx 12.5\,\mathrm{s}$.
+Again, the accepted value of $\tau$ is 43.2 s.
+The percent error was 71\%.
 
+In Table 3, the time constant observed during charging was between 5 s and 10 s, or approximately 7.5 s.
+In Table 4, the time constant observed during discharging was between 5 s and 10 s as well.
+The accepted value was $\tau = RC = (200\,\Omega)(27\,\mathrm{mF}) = 5.4\,\mathrm{s}$.
+The percent error was 39\%.
 
 
 \section{Conclusion}
-Today
+The voltage in an RC circuit decays at a rate proportional to the product of the resistance and the capacitance,
+called the time constant, $\tau$.
 
 \end{document}
