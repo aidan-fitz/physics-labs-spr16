@@ -47,7 +47,7 @@ Recall from Lab \#3 that the time constant $\tau$ of an RC circuit is the time d
 decays to $1/e \approx 37\%$ of its value. The time constant is equal to $RC$.
 
 An analog oscilloscope is an electronic device that plots voltage as a function of time by deflecting
-an electron beam in a cathode ray tube. In our setup it takes the place of a voltmeter.
+an electron beam in a cathode ray tube. It acts as a voltmeter.
 
 \section{Procedures and Results}
 
@@ -123,7 +123,7 @@ $$
 
 \begin{table}[h!]
 \centering
-\caption{Oscilloscope measurements. Data courtesy of Margaret Burkart}
+\caption{Observed and accepted values of the time constants.}
 \label{calculations}
 \begin{tabular}{|l|l|l|l|}
 \hline
@@ -136,8 +136,20 @@ Trial & $\tau_{observed}$    & $\tau_{accepted}$        & \% error \\ \hline
 \end{tabular}
 \end{table}
 
+The circuit we built haphazardly---with the oscilloscope in series instead of parallel and
+a triangle wave as the input instead of a square wave---produced the same output as we would
+expect the prescribed circuit with a larger time constant to have. We believe that the large
+percent errors are due to the fact that we set up the circuit incorrectly, but we do not
+know exactly what caused it.
+
+In the first setup with the square-wave input, the circuit was acting as a differentiator.
+One way to build a differentiator is to use an RC circuit with a time constant smaller than
+the period of the input waveform, and the accepted values of $\tau = RC$ were consistently
+smaller than the observed values of $\tau$, which in turn is always smaller than the period of
+the input voltage signal.
 
 \section{Conclusion}
-Today
+When the time constant of an RC circuit is shorter than the period of the input signal,
+the circuit acts as a differentiator.
 
 \end{document}
