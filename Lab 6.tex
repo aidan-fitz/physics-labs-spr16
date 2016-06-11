@@ -16,34 +16,195 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagestyle{fancy}
 
-\lhead{Lab \# }  %insert lab # here
+\frenchspacing
+
+\lhead{Lab \#6 }  %insert lab # here
 \rhead{\thepage}
 \cfoot{}
 
-\title{\textbf{Title} \\ \ \\ \large Lab \# }
-\author{Name: Insert Name \\ Partner: Insert Partner}
+\title{\textbf{Intro to Microwave Optics} \\ \ \\ \large Lab \#6 }
+\author{Name: Aidan Fitzgerald \\ Partners: Julia Hou, Ariella Kahan, Jennifer Lee, Jongyoul Lee, Ariel Levy, and Brandon Lin}
 \date{}
 \begin{document}
 
 \maketitle
 
 \begin{center}
-\LARGE Title
+\LARGE Intro to Microwave Optics
 \end{center}
 
 \section*{Objective}
-Hi
+
+Understand how the microwave transmitter and receiver work and use it to demonstrate the properties of electromagnetic radiation.
 
 \section{Introduction}
-How
+
+The microwave optical system uses microwaves to demonstrate the properties of electromagnetic radiation.
+This system consists of a transmitter, which emits microwaves in a certain direction, and a receiver,
+which measures the intensity of incoming microwaves and displays it on a galvanometer.
+
+We used the microwave optics system to demonstrate the following physical phenomena:
+
+\begin{description}
+  \setlength\itemsep{1em}
+
+  \item [Inverse square law] The intensity of an electromagnetic wave at a distance $d$ is proportional to $1/d^2$.
+
+  \item [Reflection] Occurs when a wave bounces off an obstacle. The law of reflection states that the angle of
+  incidence is equal to the angle of reflection at every point where the wave touches the obstacle.
+
+  \item [Polarization] Occurs when light waves are ``flattened'' to oscillate in a particular direction perpendicular
+  to its direction of propagation.
+
+  \item [Signal distribution] How is the energy of the wave distributed around the transmitter?
+
+\end{description}
+
 
 \section{Procedures and Results}
-Are
+
+\subsection{Inverse square law}
+
+We set up the transmitter and receiver on the arms of a straightened goniometer facing each other. Next, we turned
+on the transmitter, dialed up the intensity to 30$\times$, and adjusted both units so that they were 40 cm apart.
+We tried to adjust the sensitivity of the receiver so that the meter on top read 1.0, but it only went up
+to 0.9. Then, we moved the units apart and recorded the intensity readings at various distances.
+
+\begin{table}[h!]
+\centering
+\caption{Intensity vs. Distance}
+\label{Ixr}
+\begin{tabular}{|r|l|}
+\hline
+Distance ($d$) & Intensity reading ($I$) \\ \hline
+40 cm          & 0.9                     \\ \hline
+50 cm          & 0.55                    \\ \hline
+60 cm          & 0.36                    \\ \hline
+70 cm          & 0.28                    \\ \hline
+80 cm          & 0.14                    \\ \hline
+90 cm          & 0.08                    \\ \hline
+100 cm         & 0.06                    \\ \hline
+\end{tabular}
+\end{table}
+
+\pagebreak
+
+Finally, we set $d$ to a value between 70 cm and 90 cm and slowly decreased $d$. We observed that the meter
+deflection increased as the distance decreased.
+
+\subsection{Reflection}
+
+We placed a metal plate (the ``reflector'') into the space between the transmitter and receiver below their ``eye level.''
+The intensity reading on the receiver increased.
+
+\subsection{Polarization}
+
+We rotated the roll of the receiver relative to the transmitter and observed what happened to the intensity reading.
+As we increased the roll from zero to 90 degrees, the intensity decreased, and at 90 degrees, it was zero.
+
+\subsection{Signal distribution}
+
+We changed the angle of the goniometer, rotating the transmitter and receiver relative to the center of the
+goniometer, and took intensity readings at each angle setting.
+
+\begin{table}[h!]
+\centering
+\caption{Intensity vs. angle}
+\label{Ixt}
+\begin{tabular}{|r|l|}
+\hline
+Angle        & Intensity reading \\ \hline
+$0^{\circ}$  & 0.9               \\ \hline
+$10^{\circ}$ & 0.76              \\ \hline
+$20^{\circ}$ & 0.06              \\ \hline
+$30^{\circ}$ & 0                 \\ \hline
+$40^{\circ}$ & 0                 \\ \hline
+$50^{\circ}$ & 0                 \\ \hline
+$60^{\circ}$ & 0                 \\ \hline
+$70^{\circ}$ & 0                 \\ \hline
+$80^{\circ}$ & 0                 \\ \hline
+$90^{\circ}$ & 0                 \\ \hline
+\end{tabular}
+\end{table}
+
+\pagebreak
+
+\subsection{Law of reflection}
+
+We stood up the reflector on the center of the goniometer and set the angle of incidence to $theta$ by
+rotating the reflector till its surface normal was $theta$ relative to the transmitter arm of the
+goniometer. Then, we found the angle between the receiver and the surface normal of the reflector by
+rotating the receiver arm of the goniometer until the maximum intensity reading was reached.
+
+\begin{table}[h!]
+\centering
+\caption{Angle of incidence vs. angle of reflection}
+\label{angle-of-reflection}
+\begin{tabular}{|l|l|}
+\hline
+Angle of incidence & Angle of reflection \\ \hline
+$10^{\circ}$       & $40^{\circ}$        \\ \hline
+$20^{\circ}$       & $27^{\circ}$        \\ \hline
+$30^{\circ}$       & $36^{\circ}$        \\ \hline
+$40^{\circ}$       & $41^{\circ}$        \\ \hline
+$50^{\circ}$       & $50^{\circ}$        \\ \hline
+$60^{\circ}$       & $58^{\circ}$        \\ \hline
+$70^{\circ}$       & $87^{\circ}$        \\ \hline
+$80^{\circ}$       & $84^{\circ}$        \\ \hline
+$90^{\circ}$       & $90^{\circ}$        \\ \hline
+\end{tabular}
+\end{table}
+
+
 
 \section{Discussion}
-You
+
+How well do the data in Table 1 adhere to the inverse square law? We found out by multiplying the
+intensity reading by the square of the distance and finding the mean and standard deviation of
+the results:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|r|l|r|}
+\hline
+Distance ($d$) & Intensity reading ($I$) & $Id^2$      \\ \hline
+40 cm          & 0.9                     & 1440 cm$^2$ \\ \hline
+50 cm          & 0.55                    & 1375 cm$^2$ \\ \hline
+60 cm          & 0.36                    & 1296 cm$^2$ \\ \hline
+70 cm          & 0.28                    & 1372 cm$^2$ \\ \hline
+80 cm          & 0.14                    &  896 cm$^2$ \\ \hline
+90 cm          & 0.08                    &  648 cm$^2$ \\ \hline
+100 cm         & 0.06                    &  600 cm$^2$ \\ \hline
+\end{tabular}
+\end{table}
+
+The mean value of $Id^2$ is 1090 cm$^2$, and the standard deviation is 365 cm$^2$, which is
+33\% of the mean value. The value of $Id^2$ decreases as $d$ increases, so maybe the intensity
+measurements become less accurate as they decrease. These results confirm the accuracy of
+the inverse square law.
+
+In the reflection experiment (Section 2.2), we found that the receiver picks up more radiation when a
+reflective surface is placed between the transmitter and the receiver. This is probably because the
+radiation reflects back up towards the receiver instead of escaping into space.
+
+In Section 2.3, we found that the intensity of incoming radiation decreases as the roll $\theta$ of the
+receiver relative to the transmitter increases to $90^\circ$. This may be because the waves coming out
+of the transmitter are polarized in one plane and then are polarized in another plane angled $\theta$
+to the plane of the transmitter as they enter the receiver. The intensity of the received radiation is
+$\cos^2 \theta$ times the intensity of the emitted radiation.
+
+In Section 2.4, most of the energy of the wave is concentrated in front of the transmitter, and the
+portion of the wave outside of the central $60^\circ$ arc is rarefied.
+
+In Section 2.5, the angle of reflection correlates positively with the angle of incidence except when
+the angle of incidence is $10^\circ$ and $70^\circ$. From $10^\circ$ to $20^\circ$ and from $70^\circ$
+to $80^\circ$, the observed angle of reflection \textit{decreases}. This may be caused by the geometry
+of the transmitter and receiver: each has a conical waveguide that directs incoming or outgoing light.
+At these angles, the waveguides may increase the amount of radiation detected, as in Section 2.2.
 
 \section{Conclusion}
-Today
+
+Electromagnetic radiation obeys an inverse-square law for intensity, and polarization decreases its intensity.
+Reflection increases the local intensity of the light around the reflective surface.
 
 \end{document}
